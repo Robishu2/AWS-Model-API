@@ -1,5 +1,4 @@
 import json
-import pandas as pd
 
 def lambda_handler(event, context):
     body = json.loads(event['body'])
@@ -17,7 +16,7 @@ def lambda_handler(event, context):
     else:
         c = first_num / second_num
 
-    print(c)
+    print(f'{first_num} {operator} {second_num} = {c}')
 
     # TODO implement
     return {
