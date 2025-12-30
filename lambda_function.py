@@ -17,6 +17,7 @@ def lambda_handler(event, context):
         c = first_num / second_num
 
     print(f'{first_num} {operator} {second_num} = {c}')
+    print('Version 2.0')
 
     # TODO implement
     return {
