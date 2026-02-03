@@ -4,15 +4,13 @@ phases:
   install:
     runtime-versions:
       python: 3.12
-    commands:
-      - pip install -r requirements.txt -t .
-
   build:
     commands:
-      - zip -r deployment_package.zip .
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt -t .
+      - echo "Creating deployment package..."
+      - zip -r deployment_package.zip . -x "*.git*" -x "*__pycache__*" -x "*.pyc"
 
-  post_build:
-    commands:
-      - aws lambda update-function-code \
-          --function-name IntialFunction \
-          --zip-file fileb://deployment_package.zip
+artifacts:
+  files:
+    - deployment_package.zip
